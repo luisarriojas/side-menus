@@ -1,0 +1,55 @@
+<!--
+Side Menus
+Copyright (C) 2014  Luis Enrique Arriojas Catalini
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!doctype html>
+<head>
+    <!--my css-->
+    <link href="css/lateral-menus.css" rel="stylesheet" type="text/css" media="screen"/>
+    <!--my javascript-->
+    <script type="text/javascript" src="js/lateral-menus.js"></script>
+</head>
+<body>
+<!--Main container-->
+<div id="main">
+    <a class="leftButton" href="javascript:void(0);" onclick="sideMenu('menu-a')">Open menu-a</a>
+    <a class="leftButton" href="javascript:void(0);" onclick="sideMenu('menu-b')">Open menu-b</a>
+
+    <a class="rightButton" href="javascript:void(0);" onclick="sideMenu('menu-c')">Open menu-c</a>
+    <a class="rightButton" href="javascript:void(0);" onclick="sideMenu('menu-d')">Open menu-d</a>
+
+    <div id="credit">
+        Developed by <a href="http://www.luisarriojas.com" target="_blank">Luis Arriojas</a> and licensed under <a
+            href="LICENSE" target="_blank">MIT License</a>.
+        <br/>
+        Forked on <a href="https://github.com/luisarriojas/side-menus" target="_blank">GitHub</a>.
+    </div>
+</div>
+
+<!--Left menu-->
+<div id="menu-a" class="left-menu">
+    Hello, I'm the menu-a.
+    <br/>
+    <a href="javascript:void(0);" onclick="sideMenu('menu-a')">Close left menu-a</a>
+</div>
+
+<!--Right menu-->
+<div id="menu-c" class="right-menu">
+    Hi, I'm the menu-c.
+    <br/>
+    <a href="javascript:void(0);" onclick="sideMenu('menu-c')">Close right menu-c</a>
+</div>
+</body>
