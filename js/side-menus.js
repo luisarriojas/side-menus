@@ -38,21 +38,18 @@ function sideMenu(side) {
             sideReset();
         }
     } else if (classMenu == "right-menu") { //Actions for right menus.
-        alert("jojoy");
+        var displayMenu = $("#" + side).css("display");
+        if (displayMenu == "none") {
+            sideReset();
+            $("#" + side).css("display", "block");
+
+            var widthMenu = $("#" + side).outerWidth();
+            $("#main").css("right", widthMenu + "px");
+            $("#main").css("left", "-" + widthMenu + "px");
+        } else {
+            sideReset();
+        }
     }
-
-
-    /*else if (side == "right-lateral-menu") {//Actions for Right menu.
-     if (rightLateral == false) {
-     document.getElementById('left-lateral-menu').style.display = "none";
-     document.getElementById('right-lateral-menu').style.display = "block";
-     document.getElementById('main').style.left = "-" + document.getElementById('right-lateral-menu').offsetWidth + "px";
-     document.getElementById('main').style.right = document.getElementById('right-lateral-menu').offsetWidth + "px";
-     rightLateral = true;
-     } else {
-     sideReset();
-     }
-     }*/
 }
 
 function sideReset() {  //Reset both menus to original state.
