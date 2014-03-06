@@ -15,38 +15,53 @@
  You should have received a copy of the GNU Affero General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-leftLateral = false;
-rightLateral = false;
 
-function lateralMenu(side) {
-    if (side == "left-lateral-menu") {//Actions for Left menu.
-        if (leftLateral == false) {
-            document.getElementById('left-lateral-menu').style.display = "block";
-            document.getElementById('right-lateral-menu').style.display = "none";
-            document.getElementById('main').style.left = document.getElementById('left-lateral-menu').offsetWidth + "px";
-            document.getElementById('main').style.right = "-" + document.getElementById('left-lateral-menu').offsetWidth + "px";
-            leftLateral = true;
+$(".option").click(function () {
+    var menu = $(this).attr("menu");
+    sideMenu("menu-" + menu);
+});
+
+
+function sideMenu(side) {
+    var classMenu = $("#" + side).attr("class");
+
+    if (classMenu == "left-menu") { //Actions for left menus.
+        var displayMenu = $("#" + side).css("display");
+        if (displayMenu == "none") {
+            sideReset();
+            $("#" + side).css("display", "block");
+
+            var widthMenu = $("#" + side).outerWidth();
+            $("#main").css("left", widthMenu + "px");
+            $("#main").css("right", "-" + widthMenu + "px");
         } else {
-            lateralReset();
+            sideReset();
         }
-    } else if (side == "right-lateral-menu") {//Actions for Right menu.
-        if (rightLateral == false) {
-            document.getElementById('left-lateral-menu').style.display = "none";
-            document.getElementById('right-lateral-menu').style.display = "block";
-            document.getElementById('main').style.left = "-" + document.getElementById('right-lateral-menu').offsetWidth + "px";
-            document.getElementById('main').style.right = document.getElementById('right-lateral-menu').offsetWidth + "px";
-            rightLateral = true;
-        } else {
-            lateralReset();
-        }
+    } else if (classMenu == "right-menu") { //Actions for right menus.
+        alert("jojoy");
     }
+
+
+    /*else if (side == "right-lateral-menu") {//Actions for Right menu.
+     if (rightLateral == false) {
+     document.getElementById('left-lateral-menu').style.display = "none";
+     document.getElementById('right-lateral-menu').style.display = "block";
+     document.getElementById('main').style.left = "-" + document.getElementById('right-lateral-menu').offsetWidth + "px";
+     document.getElementById('main').style.right = document.getElementById('right-lateral-menu').offsetWidth + "px";
+     rightLateral = true;
+     } else {
+     sideReset();
+     }
+     }*/
 }
 
-function lateralReset() {//Reset both menus to original state.
-    document.getElementById('left-lateral-menu').style.display = "none";
-    document.getElementById('right-lateral-menu').style.display = "none";
-    document.getElementById('main').style.left = "0px";
-    document.getElementById('main').style.right = "0px";
-    leftLateral = false;
-    rightLateral = false;
+function sideReset() {  //Reset both menus to original state.
+    var menu = document.getElementById("menu-container").getElementsByTagName("div");
+
+    for (i = 0; i < menu.length; i++) {
+        $("#" + menu[i].id).css("display", "none");
+    }
+
+    $("#main").css("left", "0px");
+    $("#main").css("right", "0px");
 }
