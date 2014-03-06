@@ -21,7 +21,6 @@ $(".option").click(function () {
     sideMenu("menu-" + menu);
 });
 
-
 function sideMenu(side) {
     var classMenu = $("#" + side).attr("class");
 
@@ -55,9 +54,9 @@ function sideMenu(side) {
 function sideReset() {  //Reset both menus to original state.
     var menu = document.getElementById("menu-container").getElementsByTagName("div");
 
-    for (i = 0; i < menu.length; i++) {
-        $("#" + menu[i].id).css("display", "none");
-    }
+    $.each(menu, function (index, value) {
+        $("#" + value.id).css("display", "none");
+    });
 
     $("#main").css("left", "0px");
     $("#main").css("right", "0px");
