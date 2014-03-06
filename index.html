@@ -25,12 +25,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <body>
 <!--Main container-->
 <div id="main">
+    <!--Options-->
     <a menu="a" class="option leftButton" href="javascript:void(0);">Open menu-a</a>
     <a menu="b" class="option leftButton" href="javascript:void(0);">Open menu-b</a>
-
     <a menu="e" class="option rightButton" href="javascript:void(0);">Open menu-e</a>
     <a menu="d" class="option rightButton" href="javascript:void(0);">Open menu-d</a>
     <a menu="c" class="option rightButton" href="javascript:void(0);">Open menu-c</a>
+    <!--End options-->
 
     <div id="credit">
         Developed by <a href="http://www.luisarriojas.com" target="_blank">Luis Arriojas</a> and licensed under <a
@@ -40,41 +41,45 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </div>
 </div>
 
+<!--Menu container-->
 <div id="menu-container">
     <!--Menu A-->
     <div id="menu-a" class="left-menu">
         Hello, I'm the menu-a.
         <br/>
-        <a menu="a" class="option" href="javascript:void(0);">Close menu-a</a>
+        <a class="option-close" href="javascript:void(0);">Close menu-a</a>
     </div>
 
     <!--Menu B-->
     <div id="menu-b" class="left-menu">
         Hello, I'm the menu-b.
         <br/>
-        <a menu="b" class="option" href="javascript:void(0);">Close menu-b</a>
+        <a class="option-close" href="javascript:void(0);">Close menu-b</a>
     </div>
 
     <!--Menu C-->
     <div id="menu-c" class="right-menu">
         Hello, I'm the menu-c.
         <br/>
-        <a menu="c" class="option" href="javascript:void(0);">Close menu-c</a>
+        <a class="option-close" href="javascript:void(0);">Close menu-c</a>
     </div>
 
     <!--Menu D-->
     <div id="menu-d" class="right-menu">
         Hello, I'm the menu-d.
         <br/>
-        <a menu="d" class="option" href="javascript:void(0);">Close menu-d</a>
+        <a class="option-close" href="javascript:void(0);">Close menu-d</a>
     </div>
 
     <!--Menu E-->
     <div id="menu-e" class="right-menu">
         Hello, I'm the menu-e.
         <br/>
-        <a menu="e" class="option" href="javascript:void(0);">Close menu-e</a>
+        <a class="option-close" href="javascript:void(0);">Close menu-e</a>
     </div>
+
+    <!--Close button-->
+    <div id="close-button"></div>
 </div>
 
 <script type="text/javascript" src="js/side-menus.js"></script>

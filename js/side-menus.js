@@ -16,9 +16,19 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var mode = "slide"; //Select a mode: "slide" or "over".
+
 $(".option").click(function () {
     var menu = $(this).attr("menu");
     sideMenu("menu-" + menu);
+});
+
+$(".option-close").click(function () {
+    sideReset();
+});
+
+$("#close-button").click(function () {
+    sideReset();
 });
 
 function sideMenu(side) {
@@ -29,10 +39,13 @@ function sideMenu(side) {
         if (displayMenu == "none") {
             sideReset();
             $("#" + side).css("display", "block");
+            $("#close-button").css("display", "block");
 
-            var widthMenu = $("#" + side).outerWidth();
-            $("#main").css("left", widthMenu + "px");
-            $("#main").css("right", "-" + widthMenu + "px");
+            if (mode == "slide") {
+                var widthMenu = $("#" + side).outerWidth();
+                $("#main").css("left", widthMenu + "px");
+                $("#main").css("right", "-" + widthMenu + "px");
+            }
         } else {
             sideReset();
         }
@@ -41,10 +54,13 @@ function sideMenu(side) {
         if (displayMenu == "none") {
             sideReset();
             $("#" + side).css("display", "block");
+            $("#close-button").css("display", "block");
 
-            var widthMenu = $("#" + side).outerWidth();
-            $("#main").css("right", widthMenu + "px");
-            $("#main").css("left", "-" + widthMenu + "px");
+            if (mode == "slide") {
+                var widthMenu = $("#" + side).outerWidth();
+                $("#main").css("right", widthMenu + "px");
+                $("#main").css("left", "-" + widthMenu + "px");
+            }
         } else {
             sideReset();
         }
@@ -57,6 +73,7 @@ function sideReset() {  //Reset both menus to original state.
     $.each(menu, function (index, value) {
         $("#" + value.id).css("display", "none");
     });
+    $("#close-button").css("display", "none");
 
     $("#main").css("left", "0px");
     $("#main").css("right", "0px");
