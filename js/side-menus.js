@@ -5,64 +5,43 @@
  */
 
 var mode = "slide"; //Select a mode: "slide" or "over".
+var menu = {};
 
-$(".option").click(function () {
-    var menu = $(this).attr("menu");
-    sideMenu("menu-" + menu);
+$(".option").click(function() {
+    menu.id = "menu-" + $(this).attr("menu");
+    menu.class = $("#" + menu.id).attr("class");
+    menu.width = $("#" + menu.id).outerWidth();
+    sideMenu();
 });
 
-$(".option-close").click(function () {
+$(".option-close").click(function() {
     sideReset();
 });
 
-$("#close-button").click(function () {
+$("#close-button").click(function() {
     sideReset();
 });
 
-function sideMenu(side) {
-    var classMenu = $("#" + side).attr("class");
+function sideMenu() { //Shows the menu
+    $("#" + menu.id).css("display", "block");
+    $("#close-button").css("display", "block");
 
-    if (classMenu == "left-menu") { //Actions for left menus.
-        var displayMenu = $("#" + side).css("display");
-        if (displayMenu == "none") {
-            sideReset();
-            $("#" + side).css("display", "block");
-            $("#close-button").css("display", "block");
-
-            if (mode == "slide") {
-                var widthMenu = $("#" + side).outerWidth();
-                $("#main").css("left", widthMenu + "px");
-                $("#main").css("right", "-" + widthMenu + "px");
-            }
-        } else {
-            sideReset();
+    if (menu.class == "left-menu") { //Actions for left menus.
+        if (mode == "slide") {
+            $("#main").css("left", menu.width + "px");
+            $("#main").css("right", "-" + menu.width + "px");
         }
-    } else if (classMenu == "right-menu") { //Actions for right menus.
-        var displayMenu = $("#" + side).css("display");
-        if (displayMenu == "none") {
-            sideReset();
-            $("#" + side).css("display", "block");
-            $("#close-button").css("display", "block");
-
-            if (mode == "slide") {
-                var widthMenu = $("#" + side).outerWidth();
-                $("#main").css("right", widthMenu + "px");
-                $("#main").css("left", "-" + widthMenu + "px");
-            }
-        } else {
-            sideReset();
+    } else { //Actions for right menus.
+        if (mode == "slide") {
+            $("#main").css("left", "-" + menu.width + "px");
+            $("#main").css("right", menu.width + "px");
         }
     }
 };
 
-function sideReset() {  //Reset both menus to original state.
-    var menu = document.getElementById("menu-container").getElementsByTagName("div");
-
-    $.each(menu, function (index, value) {
-        $("#" + value.id).css("display", "none");
-    });
+function sideReset() { //Hides the menu
+    $("#" + menu.id).css("display", "none");
     $("#close-button").css("display", "none");
-
     $("#main").css("left", "0px");
     $("#main").css("right", "0px");
 };
